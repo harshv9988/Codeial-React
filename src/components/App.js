@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import { fetchPosts } from "../actions/posts";
 import { PostList } from "./index";
@@ -19,6 +20,10 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  posts: PropTypes.array.isRequired,
+};
 
 function mapstateToProps(state) {
   return {
