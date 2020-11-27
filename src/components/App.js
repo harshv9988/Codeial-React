@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { fetchPosts } from "../actions/posts";
-import { Navbar, Home, Page404 } from "./index";
+import { Navbar, Home, Page404, Login } from "./index";
 
 class App extends React.Component {
   componentDidMount() {
@@ -26,6 +26,7 @@ class App extends React.Component {
                 return <Home {...props} posts={posts} />;
               }}
             />
+            <Route component={Login} />
             <Route component={Page404} />
           </Switch>
         </div>
