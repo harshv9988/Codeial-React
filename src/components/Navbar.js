@@ -5,10 +5,12 @@ export default function Navbar() {
   return (
     <nav className="nav">
       <div className="left-div">
-        <img
-          src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png"
-          alt="logo"
-        />
+        <Link to="/">
+          <img
+            src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png"
+            alt="logo"
+          />
+        </Link>
       </div>
       <div className="search-container">
         <img
@@ -52,7 +54,9 @@ export default function Navbar() {
               <Link to="/login">Log in</Link>
             </li>
             <li>Log out</li>
-            <li>Register</li>
+            <li>
+              <Link to="/signup">Register</Link>
+            </li>
           </ul>
         </div>
       </div>
