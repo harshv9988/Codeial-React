@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { signoutuser } from "../actions/auth";
 
-export default function Navbar() {
+function Navbar(props) {
+  const handleSignout = () => {
+    localStorage.removeItem("token");
+    props.dispatch(signoutuser());
+  };
+
+  const { auth } = props;
   return (
     <nav className="nav">
       <div className="left-div">
@@ -40,26 +48,42 @@ export default function Navbar() {
         </div>
       </div>
       <div className="right-nav">
-        <div className="user">
-          <img
-            src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
-            alt="user-dp"
-            id="user-dp"
-          />
-          <span>John Doe</span>
-        </div>
+        {auth.isLoggedIn && (
+          <div className="user">
+            <img
+              src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
+              alt="user-dp"
+              id="user-dp"
+            />
+            <span>{auth.user.name}</span>
+          </div>
+        )}
+
         <div className="nav-links">
           <ul>
-            <li>
-              <Link to="/login">Log in</Link>
-            </li>
-            <li>Log out</li>
-            <li>
-              <Link to="/signup">Register</Link>
-            </li>
+            {!auth.isLoggedIn && (
+              <li>
+                <Link to="/login">Log in</Link>
+              </li>
+            )}
+            {auth.isLoggedIn && <li onClick={handleSignout}>Log out</li>}
+
+            {!auth.isLoggedIn && (
+              <li>
+                <Link to="/signup">Register</Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>
     </nav>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+
+export default connect(mapStateToProps)(Navbar);

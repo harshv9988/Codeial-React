@@ -1,4 +1,10 @@
-import { LOGIN_START, LOGIN_FAIL, LOGIN_SUCCESS } from "./actionTypes";
+import {
+  LOGIN_START,
+  LOGIN_FAIL,
+  LOGIN_SUCCESS,
+  AUTHENTICATE_USER,
+  SIGNOUT_USER,
+} from "./actionTypes";
 import { APIUrls } from "../helpers/urls";
 import { getFormBody } from "../helpers/utils";
 
@@ -43,5 +49,18 @@ export function login(email, password) {
         }
         dispatch(loginFailed(data.message));
       });
+  };
+}
+
+export function authenticateUser(user) {
+  return {
+    type: AUTHENTICATE_USER,
+    user: user,
+  };
+}
+
+export function signoutuser() {
+  return {
+    type: SIGNOUT_USER,
   };
 }
