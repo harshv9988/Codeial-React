@@ -8,6 +8,8 @@ import {
   AUTHENTICATE_USER,
   SIGNOUT_USER,
   CLEAR_ERROR_MSG,
+  EDIT_USER_SUCCESSFUL,
+  EDIT_USER_FAILED,
 } from "../actions/actionTypes";
 
 const initialAuthState = {
@@ -63,7 +65,16 @@ export default function auth(state = initialAuthState, action) {
         user: {},
         isLoggedIn: false,
       };
-
+    case EDIT_USER_SUCCESSFUL:
+      return {
+        ...state,
+        user: action.user,
+        error: false,
+      };
+    case EDIT_USER_FAILED:
+      return {
+        error: action.message,
+      };
     default:
       return state;
   }

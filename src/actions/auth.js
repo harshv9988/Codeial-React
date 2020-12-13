@@ -151,7 +151,6 @@ export function editUser(name, password, confirmPassword, userId) {
       },
       body: getFormBody({
         name,
-        email,
         password,
         confirm_password: confirmPassword,
         id: userId,
