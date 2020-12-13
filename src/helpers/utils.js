@@ -10,3 +10,7 @@ export function getFormBody(params) {
 
   return result.join("&");
 }
+
+export function getJwtToken() {
+  return localStorage.getItem("token");
+}
