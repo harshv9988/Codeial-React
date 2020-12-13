@@ -10,21 +10,31 @@ import {
 import jwt_decode from "jwt-decode";
 
 import { fetchPosts } from "../actions/posts";
-import { Navbar, Home, Page404, Login, Register } from "./index";
+import { Navbar, Home, Page404, Login, Register, Setting } from "./index";
 import { authenticateUser } from "../actions/auth";
 
-const Settings = () => {
-  return <div>settings</div>;
-};
+// const Settings = () => {
+//   return <div>settings</div>;
+// };
 
 const PrivateRoute = (PrivateRouteProps) => {
   const { path, isLoggedIn, component: Component } = PrivateRouteProps;
-  console.group("login hun kya", isLoggedIn);
   return (
     <Route
       path={path}
       render={(props) => {
-        return isLoggedIn ? <Component {...props} /> : <Redirect to="/login" />;
+        return isLoggedIn ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: {
+                from: props.location,
+              },
+            }}
+          />
+        );
         // return <Component {...props} />;
       }}
     />
@@ -67,7 +77,7 @@ class App extends React.Component {
             <Route path="/signup" component={Register} />
             <PrivateRoute
               path="/settings"
-              component={Settings}
+              component={Setting}
               isLoggedIn={auth.isLoggedIn}
             />
             <Route component={Page404} />

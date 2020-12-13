@@ -5,5 +5,6 @@ import Home from "./Home";
 import Page404 from "./Page404";
 import Login from "./Login";
 import Register from "./Register";
+import Setting from "./Setting";
 
-export { App, PostList, Home, Login, Register, Navbar, Page404 };
+export { App, PostList, Home, Login, Register, Setting, Navbar, Page404 };
