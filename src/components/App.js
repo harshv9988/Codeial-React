@@ -20,6 +20,7 @@ import {
   UserProfile,
 } from "./index";
 import { authenticateUser } from "../actions/auth";
+import { fetchUserFriends } from "../actions/friends";
 
 // const Settings = () => {
 //   return <div>settings</div>;
@@ -62,11 +63,12 @@ class App extends React.Component {
           _id: user._id,
         })
       );
+      this.props.dispatch(fetchUserFriends());
     }
   }
 
   render() {
-    const { posts, auth } = this.props;
+    const { posts, auth, friends } = this.props;
     return (
       <Router>
         <div>
@@ -76,7 +78,14 @@ class App extends React.Component {
               exact
               path="/"
               render={(props) => {
-                return <Home {...props} posts={posts} />;
+                return (
+                  <Home
+                    {...props}
+                    posts={posts}
+                    friends={friends}
+                    isLoggedIn={auth.isLoggedIn}
+                  />
+                );
               }}
             />
             <Route path="/login" component={Login} />
@@ -107,6 +116,7 @@ function mapstateToProps(state) {
   return {
     posts: state.posts,
     auth: state.auth,
+    friends: state.friends,
   };
 }
 
