@@ -10,7 +10,15 @@ import {
 import jwt_decode from "jwt-decode";
 
 import { fetchPosts } from "../actions/posts";
-import { Navbar, Home, Page404, Login, Register, Setting } from "./index";
+import {
+  Navbar,
+  Home,
+  Page404,
+  Login,
+  Register,
+  Setting,
+  UserProfile,
+} from "./index";
 import { authenticateUser } from "../actions/auth";
 
 // const Settings = () => {
@@ -35,7 +43,6 @@ const PrivateRoute = (PrivateRouteProps) => {
             }}
           />
         );
-        // return <Component {...props} />;
       }}
     />
   );
@@ -59,7 +66,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("PROPS", this.props);
     const { posts, auth } = this.props;
     return (
       <Router>
@@ -78,6 +84,11 @@ class App extends React.Component {
             <PrivateRoute
               path="/settings"
               component={Setting}
+              isLoggedIn={auth.isLoggedIn}
+            />
+            <PrivateRoute
+              path="/user/:userId"
+              component={UserProfile}
               isLoggedIn={auth.isLoggedIn}
             />
             <Route component={Page404} />
