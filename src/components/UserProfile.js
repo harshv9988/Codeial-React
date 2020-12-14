@@ -11,11 +11,25 @@ class UserProfile extends Component {
     }
   }
 
+  isuserFriend = () => {
+    const { match, friends } = this.props;
+
+    const userId = match.params.userId;
+
+    const index = friends.map((friend) => friend.to_user._id).indexOf(userId);
+
+    if (index !== -1) return true;
+
+    return false;
+  };
+
   render() {
     const {
       match: { params }, // const {params} = match
     } = this.props;
     const { profile } = this.props;
+
+    const checkUserFriend = this.isuserFriend();
 
     if (profile.inProgress) {
       return <h1>Loading.....</h1>;
@@ -40,17 +54,24 @@ class UserProfile extends Component {
           <div className="field-value">{profile.user.email}</div>
         </div>
 
-        <div className="btn-grp">
-          <button className="button save-btn">Add Friend</button>
-        </div>
+        {checkUserFriend ? (
+          <div className="btn-grp">
+            <button className="button save-btn">Remove Friend</button>
+          </div>
+        ) : (
+          <div className="btn-grp">
+            <button className="button save-btn">Add Friend</button>
+          </div>
+        )}
       </div>
     );
   }
 }
 
-function mapStateToProps({ profile }) {
+function mapStateToProps({ profile, friends }) {
   return {
     profile,
+    friends,
   };
 }
 export default connect(mapStateToProps)(UserProfile);

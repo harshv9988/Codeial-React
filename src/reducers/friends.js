@@ -7,6 +7,7 @@ export default function friends(state = defaultProfileState, action) {
   switch (action.type) {
     case FETCH_FRIENDS_SUCCESS:
       return [...action.friends];
+    // return action.friends;
     default:
       return state;
   }
