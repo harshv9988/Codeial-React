@@ -1,4 +1,4 @@
-import { FETCH_FRIENDS_SUCCESS } from "../actions/actionTypes";
+import { FETCH_FRIENDS_SUCCESS, ADD_FRIEND } from "../actions/actionTypes";
 
 const defaultProfileState = [];
 
@@ -8,6 +8,8 @@ export default function friends(state = defaultProfileState, action) {
     case FETCH_FRIENDS_SUCCESS:
       return [...action.friends];
     // return action.friends;
+    case ADD_FRIEND:
+      return [action.friend, ...state];
     default:
       return state;
   }

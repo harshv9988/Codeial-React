@@ -59,6 +59,7 @@ code {
   border-radius: 4px;
   margin-top: 20px;
   background: #fff;
+  width: 75%;
 }
 .post-header {
   padding: 10px 10px;
@@ -98,6 +99,7 @@ code {
   line-height: 22px;
   color: #424242;
   margin-top: 15px;
+  word-break: break-all;
 }
 .post-actions {
   padding: 5px;
@@ -314,6 +316,7 @@ nav .nav-links ul li:hover {
 }
 .home .posts-list {
   flex-grow: 0.8;
+  width: 100%;
 }
 .friends-list {
   background: #fff;
@@ -325,6 +328,7 @@ nav .nav-links ul li:hover {
   border: 1px solid #e0e0e0;
   border-radius: 4px;
   overflow-y: scroll;
+  width: 40%;
 }
 .friends-list .header {
   border-bottom: 1px solid #e0e0e0;
