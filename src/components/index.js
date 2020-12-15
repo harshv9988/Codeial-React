@@ -9,6 +9,7 @@ import Setting from "./Setting";
 import UserProfile from "./UserProfile";
 import FriendsList from "./FriendList";
 import FriendsListItem from "./FriendListItem";
+import CreatePost from "./CreatePost";
 
 export {
   App,
@@ -21,5 +22,6 @@ export {
   UserProfile,
   FriendsList,
   FriendsListItem,
+  CreatePost,
   Page404,
 };
