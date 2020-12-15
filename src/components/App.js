@@ -20,7 +20,7 @@ import {
   UserProfile,
 } from "./index";
 import { authenticateUser } from "../actions/auth";
-import { fetchUserFriends } from "../actions/friends";
+// import { fetchUserFriends } from "../actions/friends";
 
 // const Settings = () => {
 //   return <div>settings</div>;
@@ -63,7 +63,7 @@ class App extends React.Component {
           _id: user._id,
         })
       );
-      this.props.dispatch(fetchUserFriends());
+      // this.props.dispatch(fetchUserFriends());
     }
   }
 
@@ -84,6 +84,7 @@ class App extends React.Component {
                     posts={posts}
                     friends={friends}
                     isLoggedIn={auth.isLoggedIn}
+                    dispatch={this.props.dispatch}
                   />
                 );
               }}
