@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { PostList, FriendsList } from "./index";
+import { PostList, FriendsList, Chat } from "./index";
 import { fetchUserFriends } from "../actions/friends";
 
 export default class Home extends Component {
@@ -16,6 +16,7 @@ export default class Home extends Component {
       <div className="home">
         <PostList posts={posts} />
         {isLoggedIn && <FriendsList friends={friends} />}
+        {isLoggedIn && <Chat />}
       </div>
     );
   }
