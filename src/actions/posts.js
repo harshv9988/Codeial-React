@@ -4,9 +4,9 @@ import {
   ADD_COMMENT,
   UPDATE_POST_LIKE,
   UPDATE_COMMENT_LIKE,
-} from "./actionTypes";
-import { APIUrls } from "../helpers/urls";
-import { getJwtToken, getFormBody } from "../helpers/utils";
+} from './actionTypes';
+import { APIUrls } from '../helpers/urls';
+import { getJwtToken, getFormBody } from '../helpers/utils';
 
 export function fetchPosts() {
   return (dispatch) => {
@@ -16,7 +16,6 @@ export function fetchPosts() {
         return response.json();
       })
       .then((data) => {
-        console.log("API Data", data);
         dispatch(updatePosts(data.data.posts));
       });
   };
@@ -41,16 +40,16 @@ export function createPost(content) {
     const url = APIUrls.createPost();
 
     fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `Bearer ${getJwtToken()}`,
       },
       body: getFormBody({ content }),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("dATA", data);
+        console.log('dATA', data);
 
         if (data.success) {
           dispatch(addPost(data.data.post));
@@ -63,9 +62,9 @@ export function createComment(content, postId) {
   return (dispatch) => {
     const url = APIUrls.createComment();
     fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `Bearer ${getJwtToken()}`,
       },
       body: getFormBody({ content, post_id: postId }),
@@ -92,18 +91,18 @@ export function addLike(id, likeType, userId) {
     const url = APIUrls.toggleLike(id, likeType);
 
     fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `Bearer ${getJwtToken()}`,
       },
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("LIKE DATA", data);
+        console.log('LIKE DATA', data);
 
         if (data.success) {
-          if (likeType === "Post") {
+          if (likeType === 'Post') {
             dispatch(addLikeToStore(id, userId));
           } else {
             dispatch(allCommentLikeToStore(id, userId));
