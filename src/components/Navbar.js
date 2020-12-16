@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { signoutuser } from "../actions/auth";
+import { searchUsers } from "../actions/search";
 
 function Navbar(props) {
   const handleSignout = () => {
@@ -9,7 +10,13 @@ function Navbar(props) {
     props.dispatch(signoutuser());
   };
 
-  const { auth } = props;
+  const handleSearch = (e) => {
+    const searchText = e.target.value;
+
+    props.dispatch(searchUsers(searchText));
+  };
+
+  const { auth, results } = props;
   return (
     <nav className="nav">
       <div className="left-div">
@@ -26,26 +33,25 @@ function Navbar(props) {
           src="https://image.flaticon.com/icons/svg/483/483356.svg"
           alt="search-icon"
         />
-        <input placeholder="Search" />
+        <input placeholder="Search" onChange={handleSearch} />
 
-        <div className="search-results">
-          <ul>
-            <li className="search-results-row">
-              <img
-                src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
-                alt="user-dp"
-              />
-              <span>John Doe</span>
-            </li>
-            <li className="search-results-row">
-              <img
-                src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
-                alt="user-dp"
-              />
-              <span>John Doe</span>
-            </li>
-          </ul>
-        </div>
+        {results.length > 0 && (
+          <div className="search-results">
+            <ul>
+              {results.map((user) => (
+                <li className="search-results-row" key={user._id}>
+                  <Link to={`/user/${user._id}`}>
+                    <img
+                      src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
+                      alt="user-dp"
+                    />
+                    <span>{user.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
       <div className="right-nav">
         {auth.isLoggedIn && (
@@ -86,6 +92,7 @@ function Navbar(props) {
 function mapStateToProps(state) {
   return {
     auth: state.auth,
+    results: state.search.results,
   };
 }
 
