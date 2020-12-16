@@ -173,6 +173,12 @@ code {
   color: #9e9e9e;
   margin-left: 8px;
 }
+
+.post-comment-time {
+  width: 10px;
+  cursor: pointer;
+}
+
 .post-comment-header .post-comment-likes {
   font-size: 12px;
   line-height: 16px;
@@ -311,7 +317,7 @@ nav .nav-links ul li:hover {
 .home {
   padding: 20px 50px;
   display: flex;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 .home .posts-list {

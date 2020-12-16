@@ -1,4 +1,10 @@
-import { UPDATE_POSTS, ADD_POST, ADD_COMMENT } from "../actions/actionTypes";
+import {
+  UPDATE_POSTS,
+  ADD_POST,
+  ADD_COMMENT,
+  UPDATE_POST_LIKE,
+  UPDATE_COMMENT_LIKE,
+} from "../actions/actionTypes";
 
 export default function posts(state = [], action) {
   switch (action.type) {
@@ -17,6 +23,37 @@ export default function posts(state = [], action) {
         return post;
       });
       return newPost;
+
+    case UPDATE_POST_LIKE:
+      const newLike = state.map((post) => {
+        if (post._id === action.postId) {
+          return {
+            ...post,
+            likes: [action.userId, ...post.likes],
+          };
+        }
+        return post;
+      });
+      return newLike;
+
+    case UPDATE_COMMENT_LIKE:
+      const newPostLike = state.map((post) => {
+        const newCommentLike = post.comments.map((comment) => {
+          if (comment._id === action.commentId) {
+            return {
+              ...comment,
+              likes: [action.userId, ...comment.likes],
+            };
+            // return comment.likes.concat(action.userId);
+          }
+          return comment;
+        });
+        return {
+          ...post,
+          comments: newCommentLike,
+        };
+      });
+      return newPostLike;
     default:
       return state;
   }
