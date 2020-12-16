@@ -23,6 +23,24 @@ class UserProfile extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const {
+      match: { params: prevParams },
+    } = prevProps;
+
+    const {
+      match: { params: currentParams },
+    } = this.props;
+
+    if (
+      prevParams &&
+      currentParams &&
+      prevParams.userId !== currentParams.userId
+    ) {
+      this.props.dispatch(fetchUserProfile(currentParams.userId));
+    }
+  }
+
   handleAddFriendClick = async () => {
     const { userId } = this.props.match.params;
     const url = APIUrls.addFriend(userId);
