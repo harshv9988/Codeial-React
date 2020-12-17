@@ -8,10 +8,10 @@ class Chat extends Component {
     super(props);
 
     this.state = {
-      messages: [], // {content: 'some message', self: true}
+      messages: [], // {content: 'some message', check: true}
       typedMessage: '',
     };
-    this.socket = io.connect('http://15.207.84.232:5000');
+    this.socket = io.connect('http://54.237.158.65:5000');
     this.userEmail = props.user.email;
 
     if (this.userEmail) {
@@ -23,6 +23,8 @@ class Chat extends Component {
   setupConnections = () => {
     const socketConnection = this.socket;
     const self = this;
+
+    console.log(this.socket);
 
     socketConnection.on('connect', function () {
       console.log('CONNECTION ESTABLISHED');
@@ -44,7 +46,9 @@ class Chat extends Component {
       messageObject.content = data.message;
 
       if (data.user_email === self.userEmail) {
-        messageObject.self = true;
+        messageObject.check = true;
+      } else {
+        messageObject.check = false;
       }
 
       self.setState({
@@ -76,7 +80,7 @@ class Chat extends Component {
           {messages.map((message) => (
             <div
               className={
-                message.self
+                message.check
                   ? 'chat-bubble self-chat'
                   : 'chat-bubble other-chat'
               }
