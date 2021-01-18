@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Codeial-React/static/css/main.bd0bb098.chunk.css",
+    "main.js": "/Codeial-React/static/js/main.f2557cb3.chunk.js",
+    "main.js.map": "/Codeial-React/static/js/main.f2557cb3.chunk.js.map",
+    "runtime-main.js": "/Codeial-React/static/js/runtime-main.c763c369.js",
+    "runtime-main.js.map": "/Codeial-React/static/js/runtime-main.c763c369.js.map",
+    "static/js/2.fbcaadd5.chunk.js": "/Codeial-React/static/js/2.fbcaadd5.chunk.js",
+    "static/js/2.fbcaadd5.chunk.js.map": "/Codeial-React/static/js/2.fbcaadd5.chunk.js.map",
+    "index.html": "/Codeial-React/index.html",
+    "static/css/main.bd0bb098.chunk.css.map": "/Codeial-React/static/css/main.bd0bb098.chunk.css.map",
+    "static/js/2.fbcaadd5.chunk.js.LICENSE.txt": "/Codeial-React/static/js/2.fbcaadd5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c763c369.js",
+    "static/js/2.fbcaadd5.chunk.js",
+    "static/css/main.bd0bb098.chunk.css",
+    "static/js/main.f2557cb3.chunk.js"
+  ]
+}
