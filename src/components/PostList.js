@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { CreatePost } from "./index";
-import { Post } from "./index";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { CreatePost } from './index';
+import { Post } from './index';
 
 class PostList extends Component {
   render() {
-    const { posts } = this.props;
+    const { posts, isLoggedIn } = this.props;
     return (
       <div className="posts-list">
-        <CreatePost />
+        {isLoggedIn && <CreatePost />}
         {posts.map((post) => (
           <Post post={post} key={post._id} />
         ))}
