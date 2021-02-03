@@ -5,12 +5,11 @@ export function getFormBody(params) {
     let key = encodeURIComponent(property);
     let value = encodeURIComponent(params[property]);
 
-    result.push(key + "=" + value);
+    result.push(key + '=' + value);
   }
-
-  return result.join("&");
+  return result.join('&');
 }
 
 export function getJwtToken() {
-  return localStorage.getItem("token");
+  return localStorage.getItem('token');
 }
