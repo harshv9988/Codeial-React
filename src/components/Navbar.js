@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { signoutuser } from "../actions/auth";
-import { searchUsers } from "../actions/search";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signoutuser } from '../actions/auth';
+import { searchUsers } from '../actions/search';
 
 function Navbar(props) {
   const handleSignout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
     props.dispatch(signoutuser());
   };
 
@@ -75,7 +75,11 @@ function Navbar(props) {
                 <Link to="/login">Log in</Link>
               </li>
             )}
-            {auth.isLoggedIn && <li onClick={handleSignout}>Log out</li>}
+            {auth.isLoggedIn && (
+              <li onClick={handleSignout} className="logout">
+                Log out
+              </li>
+            )}
 
             {!auth.isLoggedIn && (
               <li>

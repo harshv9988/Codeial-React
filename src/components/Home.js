@@ -16,7 +16,7 @@ export default class Home extends Component {
       <div className="home">
         <PostList posts={posts} isLoggedIn={isLoggedIn} />
         {isLoggedIn && <FriendsList friends={friends} />}
-        {isLoggedIn && <Chat />}
+        {/* {isLoggedIn && <Chat />} */}
       </div>
     );
   }

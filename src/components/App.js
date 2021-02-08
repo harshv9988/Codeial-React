@@ -1,15 +1,15 @@
-import React from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
-} from "react-router-dom";
-import jwt_decode from "jwt-decode";
+} from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 
-import { fetchPosts } from "../actions/posts";
+import { fetchPosts } from '../actions/posts';
 import {
   Navbar,
   Home,
@@ -18,8 +18,8 @@ import {
   Register,
   Setting,
   UserProfile,
-} from "./index";
-import { authenticateUser } from "../actions/auth";
+} from './index';
+import { authenticateUser } from '../actions/auth';
 // import { fetchUserFriends } from "../actions/friends";
 
 // const Settings = () => {
@@ -37,7 +37,7 @@ const PrivateRoute = (PrivateRouteProps) => {
         ) : (
           <Redirect
             to={{
-              pathname: "/login",
+              pathname: '/login',
               state: {
                 from: props.location,
               },
@@ -52,10 +52,10 @@ const PrivateRoute = (PrivateRouteProps) => {
 class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchPosts());
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     if (token) {
       const user = jwt_decode(token);
-      console.log("answer", user);
+      console.log('answer', user);
       this.props.dispatch(
         authenticateUser({
           email: user.email,
@@ -82,9 +82,9 @@ class App extends React.Component {
                   <Home
                     {...props}
                     posts={posts}
-                    friends={friends}
                     isLoggedIn={auth.isLoggedIn}
                     dispatch={this.props.dispatch}
+                    friends={friends}
                   />
                 );
               }}
@@ -100,6 +100,7 @@ class App extends React.Component {
               path="/user/:userId"
               component={UserProfile}
               isLoggedIn={auth.isLoggedIn}
+              friends={friends}
             />
             <Route component={Page404} />
           </Switch>

@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { fetchUserProfile } from "../actions/profile";
-import { connect } from "react-redux";
-import { APIUrls } from "../helpers/urls";
-import { getJwtToken } from "../helpers/utils";
-import { addFriend, removeFriend } from "../actions/friends";
+import React, { Component } from 'react';
+import { fetchUserProfile } from '../actions/profile';
+import { connect } from 'react-redux';
+import { APIUrls } from '../helpers/urls';
+import { getJwtToken } from '../helpers/utils';
+import { addFriend, removeFriend } from '../actions/friends';
 
 class UserProfile extends Component {
   constructor(props) {
@@ -46,9 +46,9 @@ class UserProfile extends Component {
     const url = APIUrls.addFriend(userId);
 
     const options = {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `Bearer ${getJwtToken()}`,
       },
     };
@@ -59,7 +59,7 @@ class UserProfile extends Component {
     if (data.success) {
       this.setState({
         success: true,
-        successMessage: "Friend added Successfully",
+        successMessage: 'Friend added Successfully',
       });
 
       this.props.dispatch(addFriend(data.data.friendship));
@@ -77,22 +77,22 @@ class UserProfile extends Component {
     const url = APIUrls.removeFriend(match.params.userId);
 
     const extra = {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `Bearer ${getJwtToken()}`,
       },
     };
 
     const response = await fetch(url, extra);
     const data = await response.json();
-    console.log("await data", data);
+    console.log('await data', data);
 
     if (data.success) {
       // show user message
       this.setState({
         success: true,
-        successMessage: "Removed friends successfully!",
+        successMessage: 'Removed friends successfully!',
       });
       this.props.dispatch(removeFriend(match.params.userId));
     } else {
@@ -129,49 +129,51 @@ class UserProfile extends Component {
     }
 
     return (
-      <div className="settings">
-        <div className="img-container">
-          <img
-            src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
-            alt="user-dp"
-          />
-        </div>
-
-        <div className="field">
-          <div className="field-label">Name</div>
-          <div className="field-value">{profile.user.name}</div>
-        </div>
-
-        <div className="field">
-          <div className="field-label">Email</div>
-          <div className="field-value">{profile.user.email}</div>
-        </div>
-
-        {checkUserFriend ? (
-          <div className="btn-grp">
-            <button
-              className="button save-btn"
-              onClick={this.handleRemoveFriendClick}
-            >
-              Remove Friend
-            </button>
+      <>
+        <div className="settings">
+          <div className="img-container">
+            <img
+              src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
+              alt="user-dp"
+            />
           </div>
-        ) : (
-          <div className="btn-grp">
-            <button
-              className="button save-btn"
-              onClick={this.handleAddFriendClick}
-            >
-              Add Friend
-            </button>
-          </div>
-        )}
 
-        {success && (
-          <div className="alert success-dailog">{successMessage}</div>
-        )}
-        {error && <div className="alert error-dailog">{error}</div>}
-      </div>
+          <div className="field">
+            <div className="field-label">Name</div>
+            <div className="field-value">{profile.user.name}</div>
+          </div>
+
+          <div className="field">
+            <div className="field-label">Email</div>
+            <div className="field-value">{profile.user.email}</div>
+          </div>
+
+          {checkUserFriend ? (
+            <div className="btn-grp">
+              <button
+                className="button save-btn"
+                onClick={this.handleRemoveFriendClick}
+              >
+                Remove Friend
+              </button>
+            </div>
+          ) : (
+            <div className="btn-grp">
+              <button
+                className="button save-btn"
+                onClick={this.handleAddFriendClick}
+              >
+                Add Friend
+              </button>
+            </div>
+          )}
+
+          {success && (
+            <div className="alert success-dailog">{successMessage}</div>
+          )}
+          {error && <div className="alert error-dailog">{error}</div>}
+        </div>
+      </>
     );
   }
 }

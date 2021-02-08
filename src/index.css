@@ -1,30 +1,34 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 /* COMMON */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #eceffa;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*----------------------------------------------------------*/
+
+/* ----------------------------------------------------------------------- */
 .no-btn {
   border: none;
 }
@@ -207,6 +211,7 @@ code {
   padding: 10px 20px;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 .logo {
   color: #fff;
@@ -319,6 +324,7 @@ nav .nav-links ul li:hover {
   display: flex;
   width: 90%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 .home .posts-list {
   flex-grow: 0.8;
@@ -336,6 +342,7 @@ nav .nav-links ul li:hover {
   overflow-y: scroll;
   width: 40%;
 }
+
 .friends-list .header {
   border-bottom: 1px solid #e0e0e0;
   font-weight: 600;
@@ -344,6 +351,55 @@ nav .nav-links ul li:hover {
   padding: 20px;
 }
 .friends-list .friends-img img {
+  height: 40px;
+}
+.no-friends {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+.friends-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  color: #616161;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  text-decoration: none;
+}
+.friends-item:hover {
+  cursor: pointer;
+  background-color: #f1f1f1;
+}
+.friends-name {
+  padding: 0 10px;
+}
+
+/* -------------------Home friendlist section------------------------ */
+
+.friends-list-home {
+  background: #fff;
+  margin-left: 50px;
+  flex-grow: 0.2;
+  height: 50vh;
+  box-sizing: border-box;
+  margin-top: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow-y: scroll;
+  width: 40%;
+}
+
+.friends-list-home .header {
+  border-bottom: 1px solid #e0e0e0;
+  font-weight: 600;
+  font-size: 16px;
+  color: #424242;
+  padding: 20px;
+}
+.friends-list-home .friends-img img {
   height: 40px;
 }
 .no-friends {
@@ -534,4 +590,54 @@ nav .nav-links ul li:hover {
 }
 #add-post-btn:hover {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 420px) {
+  .home {
+    padding: 20px 12px;
+  }
+
+  .user {
+    font-size: 12px;
+  }
+
+  .user a img {
+    margin-left: 18px;
+  }
+
+  .left-div {
+    width: 250px;
+    margin-right: 20px;
+  }
+
+  .left-div img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .nav-links ul {
+    padding: 0px;
+  }
+
+  nav .nav-links ul li {
+    width: 37px;
+  }
+  nav .nav-links ul li a {
+    font-size: 12px;
+  }
+  .logout {
+    font-size: 10px;
+  }
+
+  nav #user-dp {
+    height: 34px;
+  }
+  /* friend list */
+  .friends-list {
+    display: none;
+  }
+
+  .post-wrapper {
+    width: 100%;
+  }
 }

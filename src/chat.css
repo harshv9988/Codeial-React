@@ -4,6 +4,7 @@
   width: 300px;
   bottom: 0;
   right: 10px;
+  display: none;
 }
 .chat-header {
   font-size: 20px;
@@ -37,7 +38,7 @@
   position: relative;
 }
 .chat-messages .other-chat:after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 50%;
@@ -54,7 +55,7 @@
   background: #b0ffb3;
 }
 .chat-messages .self-chat:after {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   top: 50%;

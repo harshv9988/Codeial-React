@@ -1,9 +1,9 @@
 import React from 'react';
 import { FriendsListItem } from './';
 
-const FriendsList = (props) => {
+const FriendsListHome = (props) => {
   return (
-    <div className="friends-list">
+    <div className="friends-list-home">
       <div className="header">Friends</div>
 
       {props.friends && props.friends.length === 0 && (
@@ -18,4 +18,4 @@ const FriendsList = (props) => {
   );
 };
 
-export default FriendsList;
+export default FriendsListHome;
