@@ -16,6 +16,7 @@ export default class Home extends Component {
       <div className="home">
         <PostList posts={posts} isLoggedIn={isLoggedIn} />
         {isLoggedIn && <FriendsList friends={friends} />}
+        {/* error in connection with address */}
         {/* {isLoggedIn && <Chat />} */}
       </div>
     );
