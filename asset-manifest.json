@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Codeial-React/static/css/main.a929b01d.chunk.css",
-    "main.js": "/Codeial-React/static/js/main.991161b3.chunk.js",
-    "main.js.map": "/Codeial-React/static/js/main.991161b3.chunk.js.map",
+    "main.css": "/Codeial-React/static/css/main.85d5c39c.chunk.css",
+    "main.js": "/Codeial-React/static/js/main.c9c938c1.chunk.js",
+    "main.js.map": "/Codeial-React/static/js/main.c9c938c1.chunk.js.map",
     "runtime-main.js": "/Codeial-React/static/js/runtime-main.c763c369.js",
     "runtime-main.js.map": "/Codeial-React/static/js/runtime-main.c763c369.js.map",
     "static/js/2.437e41e4.chunk.js": "/Codeial-React/static/js/2.437e41e4.chunk.js",
     "static/js/2.437e41e4.chunk.js.map": "/Codeial-React/static/js/2.437e41e4.chunk.js.map",
     "index.html": "/Codeial-React/index.html",
-    "static/css/main.a929b01d.chunk.css.map": "/Codeial-React/static/css/main.a929b01d.chunk.css.map",
+    "static/css/main.85d5c39c.chunk.css.map": "/Codeial-React/static/css/main.85d5c39c.chunk.css.map",
     "static/js/2.437e41e4.chunk.js.LICENSE.txt": "/Codeial-React/static/js/2.437e41e4.chunk.js.LICENSE.txt",
-    "static/media/minimize.6ea8af4b.svg": "/static/media/minimize.6ea8af4b.svg"
+    "static/media/minimize.6ea8af4b.svg": "/Codeial-React/static/media/minimize.6ea8af4b.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.c763c369.js",
     "static/js/2.437e41e4.chunk.js",
-    "static/css/main.a929b01d.chunk.css",
-    "static/js/main.991161b3.chunk.js"
+    "static/css/main.85d5c39c.chunk.css",
+    "static/js/main.c9c938c1.chunk.js"
   ]
 }
